@@ -26,6 +26,7 @@ var cassieSettings = {
   licenseKey: '${process.env.GATSBY_CASSIE_LICENSEKEY}',
   environment: '${process.env.GATSBY_CASSIE_ENVIRONMENT}',
 }
+// @ts-ignore
 new Promise(function (resolve, reject) {
   cassieLoaderScript.onload = function () {
     if (typeof CassieWidgetLoaderModule !== 'undefined') {
@@ -42,7 +43,7 @@ new Promise(function (resolve, reject) {
         },
         { once: true }
       )
-
+      // @ts-ignore
       function addStrictlyNecessaryToggleSwitch() {
         var strictlyNecessaryGroup = document.getElementById(
           'cassie_strictly_necessary'
@@ -91,7 +92,7 @@ new Promise(function (resolve, reject) {
           strictlyNecessarySwitch.checked = true
         })
       }
-
+      // @ts-ignore
       function autoToggleBasedOnConsent() {
         // @ts-ignore
         var hasConsent = CassieWidgetLoader?.Widget?.widgetTemplate?.hasConsent
@@ -105,6 +106,7 @@ new Promise(function (resolve, reject) {
           })
         }
       }
+      // @ts-ignore
       function toggleWidgetWithParam() {
         const appConsent = new URLSearchParams(window.location.search).get(
           'app_consent'
