@@ -36,9 +36,10 @@ new Promise(function (resolve, reject) {
         var strictlyNecessaryGroup = document.getElementById(
           "cassie_strictly_necessary"
         );
-        var strictlyNecessaryGroupHeader = strictlyNecessaryGroup.querySelector(
-          ".cassie-cookie-modal--group-head-container"
-        );
+        var strictlyNecessaryGroupHeader =
+          strictlyNecessaryGroup?.querySelector(
+            ".cassie-cookie-modal--group-head-container"
+          );
         var strictlyNecessarySwitch = document.createElement("div");
         strictlyNecessarySwitch.classList.add(
           "cassie-toggle-switch",
@@ -76,19 +77,7 @@ new Promise(function (resolve, reject) {
       }
 
       function autoToggleBasedOnConsent() {
-        var _CassieWidgetLoader, _CassieWidgetLoader$W, _CassieWidgetLoader$W2;
-        var hasConsent =
-          (_CassieWidgetLoader = CassieWidgetLoader) === null ||
-          _CassieWidgetLoader === void 0
-            ? void 0
-            : (_CassieWidgetLoader$W = _CassieWidgetLoader.Widget) === null ||
-              _CassieWidgetLoader$W === void 0
-            ? void 0
-            : (_CassieWidgetLoader$W2 =
-                _CassieWidgetLoader$W.widgetTemplate) === null ||
-              _CassieWidgetLoader$W2 === void 0
-            ? void 0
-            : _CassieWidgetLoader$W2.hasConsent;
+        var hasConsent = CassieWidgetLoader?.Widget?.widgetTemplate?.hasConsent;
 
         if (!hasConsent) {
           var allToggles = document.querySelectorAll(
