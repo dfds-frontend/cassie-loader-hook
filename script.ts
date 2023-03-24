@@ -1,6 +1,18 @@
+declare var CassieWidgetLoaderModule: any
+
+type CassieWidgetLoader = { some: number } | undefined
+
+export {}
+
+declare global {
+  interface Window {
+    CassieWidgetLoader: CassieWidgetLoader
+  }
+}
+
 var cassieLoaderScript = document.createElement('script')
 var cdnUrl = 'https://cscript-cdn-irl'.concat(
-  '${process.env.GATSBY_CASSIE_ENVIRONMENT}' === 'production' ? '' : '-uat',
+  process.env.GATSBY_CASSIE_ENVIRONMENT === 'production' ? '' : '-uat',
   '.cassiecloud.com/loader.js'
 )
 cassieLoaderScript.src = cdnUrl
@@ -48,7 +60,7 @@ new Promise(function (resolve, reject) {
         strictlyNecessarySwitch.ariaDisabled = true
         strictlyNecessarySwitch.checked = true
 
-        strictlyNecessaryGroupHeader.insertBefore(
+        strictlyNecessaryGroupHeader?.insertBefore(
           strictlyNecessarySwitch,
           strictlyNecessaryGroupHeader.children[1]
         )
