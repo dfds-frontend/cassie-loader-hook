@@ -12,6 +12,7 @@ declare global {
 
 var cassieLoaderScript = document.createElement('script')
 var cdnUrl = 'https://cscript-cdn-irl'.concat(
+  // @ts-ignore
   process.env.GATSBY_CASSIE_ENVIRONMENT === 'production' ? '' : '-uat',
   '.cassiecloud.com/loader.js'
 )
@@ -56,8 +57,11 @@ new Promise(function (resolve, reject) {
           'cassie-cookie-group--toggle-switch'
         )
         strictlyNecessarySwitch.role = 'switch'
+        // @ts-ignore
         strictlyNecessarySwitch.disabled = true
+        // @ts-ignore
         strictlyNecessarySwitch.ariaDisabled = true
+        // @ts-ignore
         strictlyNecessarySwitch.checked = true
 
         strictlyNecessaryGroupHeader?.insertBefore(
@@ -78,15 +82,18 @@ new Promise(function (resolve, reject) {
         var acceptAllToggleSwitch = document.getElementById(
           'cassie_accept_all_toggle_switch'
         )
+        // @ts-ignore
         acceptAllToggleSwitch.addEventListener('click', function () {
           strictlyNecessarySwitchSlider.classList.add(
             'cassie-toggle-switch--slider--active'
           )
+          // @ts-ignore
           strictlyNecessarySwitch.checked = true
         })
       }
 
       function autoToggleBasedOnConsent() {
+        // @ts-ignore
         var hasConsent = CassieWidgetLoader?.Widget?.widgetTemplate?.hasConsent
 
         if (!hasConsent) {
@@ -103,6 +110,7 @@ new Promise(function (resolve, reject) {
           'app_consent'
         )
         if (appConsent === 'false' || appConsent === 'true') {
+          // @ts-ignore
           CassieWidgetLoader.Widget.hideModal()
         }
       }
