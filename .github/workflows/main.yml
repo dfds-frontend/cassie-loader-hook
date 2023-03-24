@@ -1,0 +1,40 @@
+name: Transpile TS
+
+on:
+  push:
+    paths:
+      - "**.ts"
+  workflow_dispatch:
+
+jobs:
+  transpile:
+    name: Transpile TypeScript
+    timeout-minutes: 3
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2.7.0
+        with:
+          repository: ${{ github.repository }}
+    
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+          
+      - name: Install Babel
+        run: |
+          echo `
+            {
+              "presets": ["@babel/preset-typescript"]
+            }` >> .babelrc
+          npm install @babel/cli @babel/core @babel/preset-typescript --save-dev
+        
+      - name: Babelify TS
+        run: npx babel script.js --out-file script.js script.ts
+        
+      - name: Echo output of script.js
+        run: cat script.js
